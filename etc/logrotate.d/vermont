@@ -1,0 +1,19 @@
+#==============================================================================
+#
+# File:         /etc/logrotate.d/vermont
+#
+# Language:     Logrotate configuration file to archive log files once a week
+#
+# Author:       Joe Honton © 2011
+#
+# Initial date: January 1, 2011
+#
+#==============================================================================
+
+/var/log/vermont.log
+{
+    weekly
+    rotate 4
+	missingok
+	notifempty
+}

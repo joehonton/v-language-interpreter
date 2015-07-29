@@ -1,0 +1,57 @@
+#==============================================================================
+#
+# File:         /var/vermont/etc/conf.samples/config-sample
+#
+# Language:     Vermont configuration file
+#
+# Purpose:      This is a configuration file for running the sample collections
+#               that are contained in this directory.
+#               Try experimenting with the verbose settings in this file to
+#               help troubleshoot problems with your collection objects.
+#
+# Author:       Joe Honton © 2010
+#
+# Initial date: December 17, 2010
+#
+#==============================================================================
+
+[vermont]
+type = null									# type = null is necessary only if this config file is in the same directory as the collection objects
+directory = /var/vermont/etc/conf.samples	# path to objects to be evaluated, and default path to this config file
+files =                                     # comma separated list of filenames whose objects are to be evaluated; if not specified, all files in 'directory' will be evaluated
+module_dir = /var/vermont/modules			# path to plugin modules
+log_file = /var/log/vermont.log		        # stderr output file
+
+# options to help with verifying the installation configuration
+verbose_headers = true						# add visual line separating headers between verbose sections
+verbose_configuration = false				# show this configuration file with command-line argument overrides
+verbose_modules = false						# list all installed modules, as they are discovered during initialization
+verbose_plugins = false						# list plugins as they are first autoloaded at runtime
+
+# options to help with debugging object specifications
+verbose_base_objects = false				# show all objects, as they are initially parsed from files
+verbose_composite_objects = false			# show all composite objects, where object and namespace attributes have been merged
+verbose_substitution_objects = false		# show all objects, where static substitution variables have been replaced with values
+verbose_resource_objects = true			# show all resource objects, where dynamic substitution variables have been replaced with values
+verbose_object_line_numbers = false			# show filenames and line numbers for each parsed attribute of every object
+verbose_dependency_tree = false				# show the object dependency tree
+
+# --- options below this point may be specified per-object in each namespace file ---
+
+# options to help with runtime monitoring
+runtime_trace = false						# trace progress as each object is executed
+
+# options to help understand the trip_point output
+output_line_number = true					# show the show the filename and line number, in <filename+linenum> format, of the trip_point object
+output_object_name = true					# show the namespace and object name, in [namespace:object] format, of the trip_point object
+output_comment = true						# show the value of the object's "comment" keyword, in (comment) format, of the trip_point object
+output_method = true						# show the module's method and argument, in _>method(argument) format, of the trip_point object
+output_limit = 10							# show no more than this many errors, optional, default value is 10, use 'false' for no limit
+
+# default keywords to be applied to all namespace objects, unless specifically overridden
+comment =									# A text string that, if specified, is displayed as part of all error messages
+pass =										# A text string, containing replacement variables, that is sent to output for any objects that passes all module tests. The replacement variables may be any module keyword preceded by a dollar sign, or may be the special variables $namespace or $object or $now.
+fail =										# A text string, containing replacement variables, that is sent to output for any object that fails to pass all module tests.
+dependency = 								# One or more [namespace:object] spcifications, concatentated with '|', that specify objects that must be validated before this object is validated.
+vocabulary_check = strict					# Should objects be checked against a 'strict' set of allowable keywords, or should 'lax' rules be applied, where only required keyword are checked.
+

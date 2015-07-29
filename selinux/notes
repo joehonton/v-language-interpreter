@@ -1,0 +1,21 @@
+// raw line from /var/log/audit/audit.log
+type=AVC msg=audit(1299197402.455:3459): avc:  denied  { read } for  pid=27067 comm="consoletype" path="/var/log/vermont.log" dev=dm-0 ino=1442599 scontext=system_u:system_r:consoletype_t:s0 tcontext=system_u:object_r:cron_log_t:s0 tclass=file
+
+
+// ausearch
+// -i  --interpret means show in human readable form
+// -m  --message means only get this message type
+// -su --subject means search for events in the log with the given SELinux 'scontext'
+// -o  --object means search for events in the log with the given SELinux 'tcontext'
+//
+// audit2allow
+// -M module name
+// -w translates audit messages into a description of why the access was denied
+//
+ausearch -m avc
+ausearch -su system_u:system_r:consoletype_t:s0 -o system_u:object_r:cron_log_t:s0 -i
+ausearch -su system_u:system_r:consoletype_t:s0 -o system_u:object_r:cron_log_t:s0 | audit2allow -w
+ausearch -su system_u:system_r:consoletype_t:s0 -o system_u:object_r:cron_log_t:s0 | audit2allow -M vermontpolicy
+
+
+NOTHING TO DO 2/21/2012
