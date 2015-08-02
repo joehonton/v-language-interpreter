@@ -1,7 +1,7 @@
 <?php
 //=============================================================================
 //
-// File:         /var/vermont/include/verbose.inc
+// File:         /var/vli/include/verbose.inc
 //
 // Language:     PHP
 //
@@ -19,7 +19,7 @@
 function VerboseRulebookOptions( $config, $filename )
 {
 	if ( $config->kv['verbose_headers'] == 'true' )
-		stdverbose( "=== Vermont version 1.0 ===" );
+		stdverbose( "=== VLI version 1.0 ===" );
 	
 	if ( $config->kv['verbose_rulebook_options'] == 'true' )
 	{

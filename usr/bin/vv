@@ -1,2 +1,2 @@
 #!/bin/bash
-/usr/bin/php /var/vermont/vermont-verify.php $@
+/usr/bin/php /var/vli/vv.php $@

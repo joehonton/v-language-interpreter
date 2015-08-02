@@ -1,7 +1,7 @@
 <?php
 //=============================================================================
 //
-// File:         /var/vermont/vermont-verify.php
+// File:         /var/vli/vv.php
 //
 // Language:     PHP
 //
@@ -30,18 +30,18 @@ require_once( dirname(__FILE__) . '/include/assertion.inc' );
 $fstderr = false;						// log file
 $commandline = null;					// an array of arrays keyed on: 'commands', 'options', 'flags', 'arguments'.
 $reserved_keywords = array( 'namespace', 'object' );	// Do not allow these in namespace configuration files
-$config = new vmtVermontRulebookOptions();// the in-memory representation of the rulebook options file '/var/vermont/etc/rulebook-options'
+$config = new vmtVermontRulebookOptions();// the in-memory representation of the rulebook options file '/var/vli/etc/rulebook-options'
 
 $plugin_module_files = array();			// A list of fully qualified module filenames accessible via classname
-										//   e.g. $plugin_module_files['vmtVirtualhost'] = '/var/vermont/modules/virtualhost.inc'
+										//   e.g. $plugin_module_files['vmtVirtualhost'] = '/var/vli/modules/virtualhost.inc'
 $plugin_module_classes = array();		// A list of module class names accessible via 'type'
 										//   e.g. $plugin_module_classes['virtualhost'] = 'vmtVirtualhost';
 $logfile_module_files = array();		// A list of fully qualified logfile parse filenames accessible via classname
-										//   e.g. $logfile_module_files['vmtLogfileIptables'] = '/var/vermont/modules/logfile-modules/iptables.inc'
+										//   e.g. $logfile_module_files['vmtLogfileIptables'] = '/var/vli/modules/logfile-modules/iptables.inc'
 $logfile_module_classes = array();		// A list of logfile class names accessible via 'logformat'
 										//   e.g. $logfile_module_classes['iptables'] = 'vmtLogfileIptables';
 $resource_module_files = array();		// A list of fully qualified resource module filenames accessible via classname
-										//   e.g. $resource_module_files['vmtResourceMemory'] = '/var/vermont/modules/resource-modules/memory.inc'
+										//   e.g. $resource_module_files['vmtResourceMemory'] = '/var/vli/modules/resource-modules/memory.inc'
 $resource_module_classes = array();		// A list of resource module class names accessible via 'subtype'
 										//   e.g. $resource_module_classes['memory'] = 'vmtResourceMemory';
 

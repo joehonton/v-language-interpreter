@@ -1,8 +1,8 @@
 #==============================================================================
 #
-# File:         /var/vermont/etc/vermont.conf
+# File:         /etc/vli.conf/rulebook-options
 #
-# Language:     Vermont configuration file
+# Language:     VLI configuration file
 #
 # Purpose:      The is a default file only.  Change the 'directory' to point to
 #               the location of your collection objects.
@@ -13,11 +13,11 @@
 #
 #==============================================================================
 
-[vermont]
+[config]
 type = null
-directory = /var/vermont/etc                # <-- change this to your configuration directory
-module_dir = /var/vermont/modules			# plugin modules
-log_file = /var/log/vermont.log		        # stderr output file
+directory = /var/vli/etc/conf.d            	# default directory for the rulebook-options and object rules when no --directory option is specified on the commandline
+module_dir = /var/vli/modules				# plugin modules
+log_file = /var/log/vli.log		        	# stderr output file
 
 # options to help with verifying the installation configuration
 verbose_headers = true						# add visual line separating headers between verbose sections
@@ -35,7 +35,7 @@ verbose_dependency_tree = false				# show the object dependency tree
 # --- options below this point may be specified per-object in each namespace file ---
 
 # options to help with runtime monitoring
-runtime_trace = true						# trace progress as each object is executed
+runtime_trace = false						# trace progress as each object is executed
 
 # options to help understand the trip_point output
 output_line_number = true					# show the show the filename and line number, in <filename+linenum> format, of the trip_point object
@@ -51,8 +51,3 @@ fail =										# A text string, containing replacement variables, that is sent 
 dependency = 								# One or more [namespace:object] specifications, concatentated with '|', that specify objects that must be validated before this object is validated.
 vocabulary_check = strict					# Should objects be checked against a 'strict' set of allowable keywords, or should 'lax' rules be applied, where only required keyword are checked.
 
-# --- remove this next section from your production configuration ---
-[message]
-type = reminder
-alarm_date = 2020-01-01
-pass = Use the --directory and --config options to specify the location of the vermont configuration file

@@ -1,7 +1,7 @@
 <?php
 //=============================================================================
 //
-// File:         /var/vermont/include/rulebook-options.inc
+// File:         /var/vli/include/rulebook-options.inc
 //
 // Language:     PHP
 //
@@ -25,11 +25,11 @@ class vmtVermontRulebookOptions
 	
 	public function __construct()
 	{
-		$this->kv['directory'] = dirname(dirname(__FILE__)) . '/etc/conf.d'; # all files in this directory are configuration files
-		$this->kv['rulebook'] = 'rulebook-options';					# the configuration filename
-		$this->kv['files'] = '';									# namespace objects to execute; if not specified, all files in --directory will be executed
-		$this->kv['module_dir'] = '/var/vermont/modules';			# all files in this directory instruction modules
-		$this->kv['log_file'] = '/var/vermont/log/vermont.log';		# stderr output file
+		$this->kv['directory'] = dirname(dirname(__FILE__)) . '/etc/conf.d';	# all files in this directory are configuration files
+		$this->kv['rulebook'] = 'rulebook-options';								# the configuration filename
+		$this->kv['files'] = '';												# namespace objects to execute; if not specified, all files in --directory will be executed
+		$this->kv['module_dir'] = dirname(dirname(__FILE__)) . '/modules';		# all files in this directory are instruction modules
+		$this->kv['log_file'] = '/var/log/vli.log';								# stderr output file
 
 		# options to help with verifying the installation configuration
 		$this->kv['verbose_headers'] = 'true';						# add visual line separating headers between verbose sections
@@ -72,8 +72,10 @@ function ReadRulebookOptions()
 	// --directory commandline argument
 	if ( array_key_exists( 'directory', $commandline['options'] ) )					// did the user specify --directory or -d
 		$directory = $commandline['options']['directory'];
-	else
-		$directory = dirname(dirname(__FILE__)) . '/etc';
+	else if (file_exists('/etc/vli/conf.d'))										// does the 'etc/vli/conf.d' directory exist?
+		$directory = '/etc/vli/conf.d';
+	else																			// fallback to the local installation directory
+		$directory = dirname(dirname(__FILE__)) . '/etc/conf.d';
 	
 	// --rulebook commandline argument
 	if ( array_key_exists( 'rulebook', $commandline['options'] ) && strlen($commandline['options']['rulebook']) > 0 )

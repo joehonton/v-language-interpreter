@@ -110,21 +110,23 @@ function ParseCommandline()
 	{
 		stdout( "usage: vv -dfhqrtvxz" );
 		stdout( "Specify arguments using the short form, like '-r filename' or the long form, like '--rulebook=filename'" );
-		stdout( " --rulebook     -r name of the rulebook options file, defaults to 'rulebook-options'; may be relative to the '--directory' argument or may be a fully qualified filename" );
+		stdout( " --rulebook     -r name of the rulebook options file, defaults to 'rulebook-options';" );
+		stdout( "                   may be relative to the '--directory' argument or may be a fully qualified filename" );
 		stdout( " --directory    -d path to the rulebook options file and the namespace object files" );
-		stdout( " --files        -f {namespace_file1,namespace_file2,...} filenames within the '--directory' to execute, defaults to all files. (Filenames starting with # are always ignored.)" );
+		stdout( " --files        -f {namespace_file1,namespace_file2,...} filenames within the '--directory' to execute, defaults to all files." );
+		stdout( "                   (Filenames starting with # are always ignored.)" );
 		stdout( " --help         -h Show this help text" );
-		stdout( " --quiet        -q Quiet mode, send errors to /log/vermont.log only, not to stdout" );
 		stdout( " --tabs         -t Tab separated output format, suitable for grep or awk" );
 		stdout( " --version      -v Display version" );
 		stdout( " --noexec       -x Parse namespaces, but do not execute" );
-		stdout( " --suppress_log -z Suppress error logging to /log/vermont.log" );
+		stdout( " --quiet        -q Quiet mode, send errors to /var/log/vli.log only, not to stdout" );
+		stdout( " --suppress_log -z Suppress error logging to /var/log/vli.log" );
 		stdout( "" );
 		stdout( "For example, to verify objects from a single namespace file with a given rulebook options file, use: " );
-		stdout( "  vv --directory=/path/to/files --rulebook=filename --files=filename" );
+		stdout( "[user@host]# vv --directory=/path/to/files --rulebook=my-rulebook --files=my-object-rules.v" );
 		stdout( "" );
 		stdout( "To verify all objects within a given directory, using a standard rulebook options file named 'rulebook-options', use: " );
-		stdout( "  vv --directory=/path/to/files" );
+		stdout( "[user@host]# vv --directory=/path/to/files" );
 		stdout( "" );
 		exit;
 	}
