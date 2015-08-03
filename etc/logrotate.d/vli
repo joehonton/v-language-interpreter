@@ -1,6 +1,6 @@
 #==============================================================================
 #
-# File:         /etc/logrotate.d/vermont
+# File:         /etc/logrotate.d/vli
 #
 # Language:     Logrotate configuration file to archive log files once a week
 #
@@ -10,7 +10,7 @@
 #
 #==============================================================================
 
-/var/log/vermont.log
+/var/log/vli.log
 {
     weekly
     rotate 4

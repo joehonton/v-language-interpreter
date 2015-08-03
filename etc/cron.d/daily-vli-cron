@@ -1,10 +1,10 @@
 #==============================================================================
 #
-# File:         /etc/cron.d/hourly-vermont-cron
+# File:         /etc/cron.d/daily-vli-cron
 #
 # Language:     cron
 #
-# Contents:     Hourly vermont verification runs at 10 minutes after the hour
+# Contents:     Daily VLI verification runs at 2 AM 
 #
 # Author:       Joe Honton © 2011
 #
@@ -15,7 +15,7 @@
 MAILTO = "noc@example.com"
 PATH = "/sbin:/bin:/usr/sbin:/usr/bin"
 
-10      *     *     *     *     root /usr/bin/php vv -d /var/vermont/etc/conf.samples
+0       2     *     *     *     root vv -d /var/vli/etc/conf.samples
 
 # *     *     *     *     *     user    command
 # -     -     -     -     -      -
