@@ -25,3 +25,15 @@ V is well suited to helping system administrators with monitoring computer syste
 ## VLanguage.net
 
 The V Language Interpreter is documented at [vlanguage.net](http://vlanguage.net).
+
+## License
+
+The V Language Interpreter is open-sourced under the
+![](http://vlanguage.net/img/CC-BY-NC-ND.png)
+[CC-BY-NC-ND](http://htmlpreview.github.com/?https://github.com/joehonton/v-language-interpreter/blob/master/LICENSE.html)
+License.
+
+
+
+
+
